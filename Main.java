@@ -14,7 +14,7 @@ class Main {
         System.out.println("Parameters: " + parameters);
         String[] paramArray = parameters.split("&");
         System.out.println(Arrays.deepToString(paramArray));
-        Map<String, String> paramMap = new LinkedHashMap<>();
+        LinkedHashMap<String, String> paramMap = new LinkedHashMap<String, String>();
         for(int i = 0; i < paramArray.length; i++) {
             paramMap.put(paramArray[i].split("=")[0], 
                 paramArray[i].split("=").length > 1 ? 
@@ -22,8 +22,13 @@ class Main {
         }
 
         System.out.println("Parameter Map: " + paramMap);
-
-
         // 3. Print Parameter Map        
+        printMap(paramMap);
+    }
+
+    static void printMap(LinkedHashMap map) {
+        for(Map.Entry<String, String> entry: map.entrySet()){
+            System.out.printf("%s : %s", entry.getValue(), map.getKey()); 
+        }    
     }
 }
